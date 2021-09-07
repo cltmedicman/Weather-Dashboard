@@ -1,0 +1,11 @@
+#form-container {
+    border-bottom: 2px solid black;
+}
+
+#weather-now {
+    border: 1px solid black;
+}
+
+#days {
+    border: 1px solid black;
+}

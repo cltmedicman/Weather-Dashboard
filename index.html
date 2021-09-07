@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="cviewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="p-1 mb-2 bg-primary text-white text-center"><h1>Weather Dashboard</h1></div>
+    </header>
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="form-group m-1" id="form-container">
+                <label for="weather"><h2>Search for a City:</h2></label>
+                <input type="text" class="form-control" id="weather" placeholder="City">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary m-1" type="submit">Submit</button>
+                </div>
+            </div>
+            <div>
+                <ul>
+                    <li>Search 1</li>
+                    <li>Search 2</li>
+                    <li>Search 3</li>
+                    <li>Search 4</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-8 col-md-6 col-sm-8 col-xs-6" id="weather-container">
+            <div class="row" id="weather-now">
+                <p>Testes</p>
+            </div>
+            <div class="row" id="weather-future">
+                <div class="row">
+                    <p>5 Day Forecast:</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="days">
+                        test
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="days">
+                        test
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="days">
+                        test
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="days">
+                        test
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" id="days">
+                        test
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

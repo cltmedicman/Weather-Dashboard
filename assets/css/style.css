@@ -4,8 +4,15 @@
 
 #weather-now {
     border: 1px solid black;
+    background-color:silver;
 }
 
-#days {
+#five-day {
+    font-weight: bold;
+}
+
+.days {
     border: 1px solid black;
+    background-color:slateblue;
+    color: white;
 }

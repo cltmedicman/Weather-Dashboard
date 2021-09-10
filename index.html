@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="cviewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="p-1 mb-2 bg-primary text-white text-center"><h1>Weather Dashboard</h1></div>
+    </header>
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+            <div class="form-group m-1" id="form-container">
+                <label for="weather"><h2>Search for a City:</h2></label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="city" placeholder="City">
+                    <div class="input-group-append">
+                        <select class="form-select-lg" name="state" id="state-id">
+                            <option value="AL">AL</option>
+                            <option value="AK">AK</option>
+                            <option value="AZ">AZ</option>
+                            <option value="AR">AR</option>
+                            <option value="CA">CA</option>
+                            <option value="CO">CO</option>
+                            <option value="CT">CT</option>
+                            <option value="DE">DE</option>
+                            <option value="DC">DC</option>
+                            <option value="FL">FL</option>
+                            <option value="GA">GA</option>
+                            <option value="HI">HI</option>
+                            <option value="ID">ID</option>
+                            <option value="IL">IL</option>
+                            <option value="IN">IN</option>
+                            <option value="IA">IA</option>
+                            <option value="KS">KS</option>
+                            <option value="KY">KY</option>
+                            <option value="LA">LA</option>
+                            <option value="ME">ME</option>
+                            <option value="MD">MD</option>
+                            <option value="MA">MA</option>
+                            <option value="MI">MI</option>
+                            <option value="MN">MN</option>
+                            <option value="MS">MS</option>
+                            <option value="MO">MO</option>
+                            <option value="MT">MT</option>
+                            <option value="NE">NE</option>
+                            <option value="NV">NV</option>
+                            <option value="NH">NH</option>
+                            <option value="NJ">NJ</option>
+                            <option value="NM">NM</option>
+                            <option value="NY">NY</option>
+                            <option value="NC">NC</option>
+                            <option value="ND">ND</option>
+                            <option value="OH">OH</option>
+                            <option value="OK">OK</option>
+                            <option value="OR">OR</option>
+                            <option value="PA">PA</option>
+                            <option value="RI">RI</option>
+                            <option value="SC">SC</option>
+                            <option value="SD">SD</option>
+                            <option value="TN">TN</option>
+                            <option value="TX">TX</option>
+                            <option value="UT">UT</option>
+                            <option value="VT">VT</option>
+                            <option value="VA">VA</option>
+                            <option value="WA">WA</option>
+                            <option value="WV">WV</option>
+                            <option value="WI">WI</option>
+                            <option value="WY">WY</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary m-1 submitbtn" type="submit">Submit</button>
+                </div>
+            </div>
+            <div class="d-grid gap-2 search"></div>
+        </div>
+        <div class="col-lg-8 col-md-6 col-sm-8 col-xs-6" id="weather-container">
+            <div class="row" id="weather-now">
+                <h1 id="current-city"></h1>
+                <p id="temp"></p>
+                <p id="wind"></p>
+                <p id="humidity"></p>
+                <p id="UV"></p>
+            </div>
+            <div class="row" id="weather-future">
+                <div class="row">
+                    <h3 id="five-day">5 Day Forecast:</h3>
+                </div>
+                <div class="row g-2">
+                    <div class="col" id="day1">
+                        
+                    </div>
+                    <div class="col" id="day2">
+                        
+                    </div>
+                    <div class="col" id="day3">
+                        
+                    </div>
+                    <div class="col" id="day4">
+                        
+                    </div>
+                    <div class="col" id="day5">
+                        
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

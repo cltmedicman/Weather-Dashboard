@@ -1,5 +1,19 @@
+body {
+    background-color: powderblue;
+}
+
 #form-container {
     border-bottom: 2px solid black;
+}
+
+#city {
+    background-color:wheat;
+    border: 2px solid black;
+}
+
+#state-id {
+    background-color:wheat;
+    border: 2px solid black;
 }
 
 #weather-now {

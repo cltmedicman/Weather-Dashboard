@@ -16,24 +16,35 @@ var stateEl = document.querySelector('#state-id');
 var submitBtn = document.querySelector('.submitbtn');
 var searchEl = document.querySelector('.search');
 
+searchHx();
+
 submitBtn.addEventListener('click', function() {
   var city = cityEl.value;
   var state = stateEl.value
   var place = city + ',' + state + ',US';
-  searchList(place);
-  setInterval(currentWeather(place), 60000);
+  place = place.toUpperCase();
+  currentWeather(place);
 })
 
-if (JSON.parse(localStorage.getItem('Places')) != null) {
-  var storedPlaces = JSON.parse(localStorage.getItem('Places'));
-  searchEl.innerHTML = "";
+document.addEventListener('click', function(e) {
+  var target = e.target;
+  if (target.classList.contains('saved-btn')) {
+    var place = target.innerText;
+    place = place.toUpperCase();
+    currentWeather(place);
+  }
+})
 
-  for (i = 0; i < storedPlaces.length; i++) {
-    searchList(storedPlaces[i]);
+function searchHx () {
+  if (JSON.parse(localStorage.getItem('Places')) != null) {
+    var storedPlaces = JSON.parse(localStorage.getItem('Places'));
+    searchEl.innerHTML = "";
+  
+    for (i = 0; i < storedPlaces.length; i++) {
+      searchList(storedPlaces[i]);
+    }
   }
 }
-
-
 
 function currentWeather (place) {
   fetch('https://api.openweathermap.org/data/2.5/weather?q=' + place + '&appid=' + api + '&units=imperial')
@@ -56,15 +67,20 @@ function currentWeather (place) {
     
     if (JSON.parse(localStorage.getItem('Places')) != null) {
       savedPlaces = JSON.parse(localStorage.getItem('Places'));
+    } else {
+      savedPlaces.push(place);
+      localStorage.setItem('Places', JSON.stringify(savedPlaces));
+      searchList(place);
     }
     
     if (!savedPlaces.includes(place)) {
+      if (savedPlaces.length >= 5) {
+        savedPlaces.shift();
+      }
+      searchList(place);
       savedPlaces.push(place);
       localStorage.setItem('Places', JSON.stringify(savedPlaces));
     }
-    
-    console.log(localStorage.getItem('Places'));
-    
   })
 }
 
@@ -180,14 +196,7 @@ function searchList(place){
   button.classList.add('btn-secondary');
   button.classList.add('saved-btn');
   button.setAttribute("type", "button");
+  button.setAttribute("style", "width: 100%; text-transform: capitalize;");
   div.appendChild(button);
   divContainer.appendChild(div);
 }
-
-document.addEventListener('click', function(e) {
-  var target = e.target;
-  if (target.classList.contains('saved-btn')) {
-    var place = target.innerText;
-    currentWeather(place);
-  }
-})

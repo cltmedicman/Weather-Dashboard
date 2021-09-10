@@ -76,6 +76,7 @@ function currentWeather (place) {
     if (!savedPlaces.includes(place)) {
       if (savedPlaces.length >= 5) {
         savedPlaces.shift();
+        searchHx();
       }
       searchList(place);
       savedPlaces.push(place);

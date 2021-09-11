@@ -16,8 +16,10 @@ var stateEl = document.querySelector('#state-id');
 var submitBtn = document.querySelector('.submitbtn');
 var searchEl = document.querySelector('.search');
 
+// Calls the function to display the saved searches
 searchHx();
 
+// Event listener for submit button
 submitBtn.addEventListener('click', function() {
   var city = cityEl.value;
   var state = stateEl.value
@@ -26,6 +28,7 @@ submitBtn.addEventListener('click', function() {
   currentWeather(place);
 })
 
+// Event listener for saved search buttons
 document.addEventListener('click', function(e) {
   var target = e.target;
   if (target.classList.contains('saved-btn')) {
@@ -35,6 +38,7 @@ document.addEventListener('click', function(e) {
   }
 })
 
+// Recalls the saved searches and places them in a list
 function searchHx () {
   if (JSON.parse(localStorage.getItem('Places')) != null) {
     var storedPlaces = JSON.parse(localStorage.getItem('Places'));
@@ -46,6 +50,7 @@ function searchHx () {
   }
 }
 
+// Function to display the current weather and call the 5 day forecast function
 function currentWeather (place) {
   fetch('https://api.openweathermap.org/data/2.5/weather?q=' + place + '&appid=' + api + '&units=imperial')
   .then(function(response) {return response.json()})
@@ -65,6 +70,7 @@ function currentWeather (place) {
     uvIndex(lat, lon);
     fiveDay(place);
     
+    // Saves the searched city if not already in the saved searches
     if (JSON.parse(localStorage.getItem('Places')) != null) {
       savedPlaces = JSON.parse(localStorage.getItem('Places'));
     } else {
@@ -85,6 +91,7 @@ function currentWeather (place) {
   })
 }
 
+// Function to call the UV Index API and place in html along with colored background based on severity
 function uvIndex(lat, lon) {
   fetch('https://api.openweathermap.org/data/2.5/uvi?appid=' + api + '&lat=' + lat + '&lon=' + lon)
   .then(function(response) {return response.json()})
@@ -102,6 +109,7 @@ function uvIndex(lat, lon) {
   })
 }
 
+// function for 5 day forecast
 function fiveDay(place) {
   fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + place + '&appid=' + api + '&units=imperial')
   .then(function(response) {return response.json()})
@@ -109,10 +117,13 @@ function fiveDay(place) {
     
     var date = moment();
     var time = " 15:00:00";
-
+    
+    // Adds 1 day to the current day to search the array for the next day's weather
     var date1 = moment(date).add(1, 'd').format("YYYY-MM-DD");
+    // places date and time in a format to compare to the JSON data received from the fetch
     date1 = date1 + time;
     const day1 = new Array();
+    // for loop to search for the next day's weather from the array
     for (i = 0; i < data.list.length; i++) {
       if (data.list[i].dt_txt === date1) {
         day1.push(data.list[i]);
@@ -125,9 +136,12 @@ function fiveDay(place) {
       }
     }
 
+    // Adds 2 days to the current day to search the array for the next day's weather
     var date2 = moment(date).add(2, 'd').format("YYYY-MM-DD");
+    // places date and time in a format to compare to the JSON data received from the fetch
     date2 = date2 + time;
     const day2 = new Array();
+    // for loop to search for the next day's weather from the array
     for (i = 0; i < data.list.length; i++) {
       if (data.list[i].dt_txt === date2) {
         day2.push(data.list[i]);
@@ -139,10 +153,12 @@ function fiveDay(place) {
         + "<h6>Humidity:&nbsp;" + day2[0].main.humidity + "&nbsp;&#37;</h6></div>"
       }
     }
-    
+    // Adds 3 days to the current day to search the array for the next day's weather
     var date3 = moment(date).add(3, 'd').format("YYYY-MM-DD");
+    // places date and time in a format to compare to the JSON data received from the fetch
     date3 = date3 + time;
     const day3 = new Array();
+    // for loop to search for the next day's weather from the array
     for (i = 0; i < data.list.length; i++) {
       if (data.list[i].dt_txt === date3) {
         day3.push(data.list[i]);
@@ -154,10 +170,12 @@ function fiveDay(place) {
         + "<h6>Humidity:&nbsp;" + day3[0].main.humidity + "&nbsp;&#37;</h6></div>"
       }
     }
-
+    // Adds 4 days to the current day to search the array for the next day's weather
     var date4 = moment(date).add(4, 'd').format("YYYY-MM-DD");
+    // places date and time in a format to compare to the JSON data received from the fetch
     date4 = date4 + time;
     const day4 = new Array();
+    // for loop to search for the next day's weather from the array
     for (i = 0; i < data.list.length; i++) {
       if (data.list[i].dt_txt === date4) {
         day4.push(data.list[i]);
@@ -169,10 +187,12 @@ function fiveDay(place) {
         + "<h6>Humidity:&nbsp;" + day4[0].main.humidity + "&nbsp;&#37;</h6></div>"
       }
     }
-
+    // Adds 4 days to the current day to search the array for the next day's weather
     var date5 = moment(date).add(5, 'd').format("YYYY-MM-DD");
+    // places date and time in a format to compare to the JSON data received from the fetch
     date5 = date5 + time;
     const day5 = new Array();
+    // for loop to search for the next day's weather from the array
     for (i = 0; i < data.list.length; i++) {
       if (data.list[i].dt_txt === date5) {
         day5.push(data.list[i]);
@@ -188,6 +208,7 @@ function fiveDay(place) {
   })
 }
 
+// function to add previously searched place to saved search list
 function searchList(place){
   var divContainer = document.querySelector('.search');
   var div = document.createElement("div");
